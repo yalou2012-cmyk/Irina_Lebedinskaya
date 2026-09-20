@@ -34,3 +34,6 @@
 /* Prepared editorial cards retain their complete portrait proportions. */
 .online .illustration img{aspect-ratio:auto;height:auto;object-fit:contain}
 .relationships .illustration{max-width:760px}
+
+/* Complete editorial cards replace duplicated surrounding copy. */
+.editorial-card{display:block}.editorial-card .illustration{max-width:760px;margin-inline:auto}.editorial-card .text-link{display:flex;width:max-content;margin-inline:auto}
