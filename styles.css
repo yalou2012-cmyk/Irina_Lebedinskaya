@@ -37,3 +37,5 @@
 
 /* Complete editorial cards replace duplicated surrounding copy. */
 .editorial-card{display:block}.editorial-card .illustration{max-width:760px;margin-inline:auto}.editorial-card .text-link{display:flex;width:max-content;margin-inline:auto}
+
+.relationships-intro{max-width:760px;margin:0 auto 36px;color:var(--text-muted)}.approach-methods{padding-left:20px;color:var(--text-muted);margin:24px 0}.approach-methods li+li{margin-top:18px}.meeting-details{max-width:760px;margin:56px auto 0}.meeting-details h2{font-size:clamp(36px,4vw,54px)}.meeting-details p{max-width:none}.online .meeting-terms{font-size:19px;color:var(--green-dark)}.practice-scope{border-top:1px solid var(--line);margin-top:32px;padding-top:28px}.practice-scope h3{margin-bottom:16px}
