@@ -16,3 +16,17 @@
 .community .text-link{color:var(--green-dark);border-color:var(--green-mid)}
 .community .text-link:hover{color:var(--green-deep);border-color:var(--green-deep)}
 .sequence span{color:var(--text-muted)}
+
+/* Размышления: один текст, мягкая смена, постоянная высота для всех фраз. */
+.approach-copy{font-size:16px;line-height:1.85}
+.approach-copy p+p{margin-top:28px}
+.reflections{background:var(--bg-soft)}
+.reflections h2{font-family:var(--sans);font-size:clamp(18px,2vw,25px);line-height:1.5;letter-spacing:0;font-weight:400;color:var(--text-muted);max-width:800px;margin-bottom:32px}
+.reflection-stage{max-width:960px;position:relative}
+.reflection-text{max-width:none;font-family:var(--serif);font-size:clamp(34px,4.4vw,62px);line-height:1.15;letter-spacing:-.02em;color:var(--green-dark);overflow-wrap:anywhere;transition:opacity .45s ease,transform .45s ease}
+.reflection-text.is-changing{opacity:0;transform:translateY(8px)}
+.reflection-measure{position:absolute;inset:0 0 auto;visibility:hidden;pointer-events:none}
+.reflection-controls{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:32px}
+.reflection-controls button{background:none;border:0;border-bottom:1px solid var(--green-light);padding:8px 0;min-height:44px;font-size:14px;color:var(--text-muted);cursor:pointer}
+.reflection-controls button:hover{color:var(--green-dark);border-color:var(--green-mid)}
+@media(prefers-reduced-motion:reduce){.reflection-text.is-changing{opacity:1;transform:none}}

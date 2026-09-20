@@ -67,3 +67,89 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
     }
   });
 }
+
+// Содержимое редактируется отдельно, в data/reflections.js.
+(() => {
+  const block = document.querySelector('#reflections');
+  const phrases = typeof reflections === 'undefined' || !Array.isArray(reflections)
+    ? [] : reflections.filter(text => typeof text === 'string' && text.trim()).map(text => text.trim());
+  if (!block || !phrases.length) return;
+  const text = block.querySelector('.reflection-text');
+  const stage = block.querySelector('.reflection-stage');
+  const toggle = block.querySelector('.reflection-toggle');
+  const next = block.querySelector('.reflection-next');
+  const controls = block.querySelector('.reflection-controls');
+  let index = 0;
+  let timer;
+  let transitionTimer;
+  let hovering = false;
+  let touching = false;
+  let focused = false;
+  let paused = reducedMotion.matches;
+  text.textContent = phrases[index];
+  block.hidden = false;
+  controls.hidden = phrases.length < 2;
+
+  function stop() {
+    clearTimeout(timer);
+    clearTimeout(transitionTimer);
+    text.classList.remove('is-changing');
+  }
+  function schedule() {
+    clearTimeout(timer);
+    if (phrases.length > 1 && !paused && !hovering && !touching && !focused && !document.hidden) {
+      timer = setTimeout(() => change(false), 7000);
+    }
+  }
+  function change(manual) {
+    stop();
+    const replace = () => {
+      index = (index + 1) % phrases.length;
+      text.setAttribute('aria-live', manual ? 'polite' : 'off');
+      text.textContent = phrases[index];
+      text.classList.remove('is-changing');
+      schedule();
+    };
+    if (reducedMotion.matches) replace();
+    else {
+      text.classList.add('is-changing');
+      transitionTimer = setTimeout(replace, 450);
+    }
+  }
+  function label() {
+    toggle.textContent = paused ? 'Продолжить смену' : 'Остановить смену';
+  }
+  toggle.addEventListener('click', () => { paused = !paused; label(); stop(); schedule(); });
+  next.addEventListener('click', () => change(true));
+  block.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse' || event.pointerType === 'pen') { hovering = true; stop(); }
+  });
+  block.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+  block.addEventListener('pointerdown', () => { touching = true; stop(); });
+  window.addEventListener('pointerup', () => { if (touching) { touching = false; schedule(); } });
+  window.addEventListener('pointercancel', () => { touching = false; schedule(); });
+  block.addEventListener('focusin', () => { focused = true; stop(); });
+  block.addEventListener('focusout', event => {
+    if (!block.contains(event.relatedTarget)) { focused = false; stop(); schedule(); }
+  });
+  document.addEventListener('visibilitychange', () => { stop(); schedule(); });
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) { paused = true; label(); stop(); }
+  });
+
+  // Измеряем длиннейшую фразу: при смене текста соседние секции не прыгают.
+  const measure = document.createElement('p');
+  measure.className = 'reflection-text reflection-measure';
+  measure.setAttribute('aria-hidden', 'true');
+  stage.append(measure);
+  function reserveSpace() {
+    let height = 0;
+    phrases.forEach(phrase => { measure.textContent = phrase; height = Math.max(height, measure.getBoundingClientRect().height); });
+    stage.style.minHeight = `${Math.ceil(height)}px`;
+  }
+  reserveSpace();
+  window.addEventListener('resize', reserveSpace);
+  if (document.fonts) document.fonts.ready.then(reserveSpace);
+  label();
+  schedule();
+})();

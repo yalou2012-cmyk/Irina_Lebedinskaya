@@ -16,6 +16,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2329483A'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia' font-size='38' fill='%23F4F7F2'%3EИ%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script src="data/reflections.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -45,7 +46,13 @@
     </section>
     <section class="section white" id="approach">
       <div class="wrap concept-grid">
-        <div class="reveal"><p class="eyebrow">01 / Подход</p><h2>Видеть человека<br><em>целиком.</em></h2><p>Мы привыкли обращаться к специалисту, когда речь идёт о теле. Психолог — такой же специалист, только предметом работы становится человек, его переживания, поведение и отношения с миром.</p></div>
+        <div class="reveal"><p class="eyebrow">01 / Подход</p><h2>Видеть человека<br><em>целиком.</em></h2>
+          <div class="approach-copy">
+            <p>Мы привыкли обращаться к специалисту, когда заболели. Тело сигнализирует болью. Например, заболел зуб — и человек идёт к стоматологу. Не к ЛОРу и не к гинекологу, а к конкретному специалисту.</p>
+            <p>Но есть в человеке то, что нельзя пощупать, потыкать, рассмотреть, сделать рентген или УЗИ. Это эмоции, чувства и внутренние ощущения. Иногда человек может описать словами, что с ним происходит, а иногда — нет.</p>
+            <p>Для этого есть такой специалист — психолог. Он помогает распознавать свои эмоции, чувства, ощущения и реакции, лучше понимать себя и учиться жить понятнее, комфортнее и гармоничнее с самим собой, а затем и с близкими людьми и окружающим миром.</p>
+          </div>
+        </div>
         <figure class="illustration"><a href="images/concept-human-world.png" target="_blank" rel="noopener" aria-label="Открыть иллюстрацию «Человек — система» в полном размере, в новой вкладке"><img src="images/concept-human-world.png" alt="Человек — система: отдельными частями тела занимаются профильные специалисты, психолог работает с переживаниями человека и его отношениями с миром" width="1448" height="1086" loading="lazy"></a><figcaption>Человек — больше, чем отдельные части <span>Открыть крупнее ↗</span></figcaption></figure>
       </div>
       <div class="wrap approach-detail reveal"><h3>Понять,<br>что происходит</h3><div><p>Мы живём внутри системы отношений. Наша реакция редко возникает сама по себе: за ней могут стоять ситуация, мысли, чувства и предыдущий опыт.</p><p>Психология даёт инструменты, чтобы замечать эти связи. Постепенно становится понятнее, что происходит и как можно действовать дальше.</p><p class="sequence">Ситуация <span>—</span> Мысли <span>—</span> Чувства <span>—</span> Действия</p></div></div>
@@ -58,6 +65,16 @@
     <section class="photo-transition wrap">
       <img src="images/portrait-reflective.jpg" alt="Задумчивый чёрно-белый портрет Ирины" width="2560" height="1707" loading="lazy">
       <div class="reveal"><p class="eyebrow">Место для ваших слов</p><h2>Не обязательно сразу знать, как правильно назвать то, что с вами происходит.</h2><p>Можно искать слова постепенно. Начать с ощущения, ситуации или разговора, к которому вы всё время возвращаетесь.</p></div>
+    </section>
+    <section class="reflections section" id="reflections" aria-labelledby="reflections-title" hidden>
+      <div class="wrap">
+        <h2 id="reflections-title">Иногда стоит остановиться и заметить…</h2>
+        <div class="reflection-stage"><p class="reflection-text" id="reflection-text" aria-live="off"></p></div>
+        <div class="reflection-controls">
+          <button type="button" class="reflection-toggle" aria-controls="reflection-text">Остановить смену</button>
+          <button type="button" class="reflection-next" aria-controls="reflection-text">Следующая мысль <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
     </section>
     <section class="dialogue section"><div class="wrap reveal"><p class="eyebrow">От понимания — к взаимодействию</p><h2>Мало научиться говорить.<br>Важно научиться<br><em>договариваться.</em></h2><p>Слышать себя. Замечать другого.<br>Находить способ быть в диалоге.</p></div></section>
     <section class="section relationships wrap">
