@@ -30,3 +30,7 @@
 .reflection-controls button{background:none;border:0;border-bottom:1px solid var(--green-light);padding:8px 0;min-height:44px;font-size:14px;color:var(--text-muted);cursor:pointer}
 .reflection-controls button:hover{color:var(--green-dark);border-color:var(--green-mid)}
 @media(prefers-reduced-motion:reduce){.reflection-text.is-changing{opacity:1;transform:none}}
+
+/* Prepared editorial cards retain their complete portrait proportions. */
+.online .illustration img{aspect-ratio:auto;height:auto;object-fit:contain}
+.relationships .illustration{max-width:760px}
