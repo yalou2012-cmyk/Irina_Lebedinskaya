@@ -52,9 +52,10 @@
 @media(max-width:800px){.notes-grid{gap:36px}}
 @media(max-width:560px){.notes-grid{grid-template-columns:1fr;gap:12px}.relationships-intro{padding-left:18px;margin-bottom:32px}}
 
-.process-story{border-top:1px solid var(--line);padding-top:48px;margin-top:66px}
+.process-section{background:var(--bg-main)}
+.process-story{margin-top:0}
 .process-visual{max-width:930px;margin-inline:auto}
 .process-story-copy{max-width:760px;margin:32px auto 0;color:var(--text-muted)}
 .process-story-copy p{max-width:none}
 .direct-telegram{margin-top:28px;max-width:100%;gap:24px}
-@media(max-width:560px){.process-story{padding-top:30px;margin-top:40px}.process-story-copy{margin-top:24px}}
+@media(max-width:560px){.process-story-copy{margin-top:24px}}
